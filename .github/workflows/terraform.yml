@@ -5,17 +5,12 @@ on: [push]
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: [self-hosted, windows, x64]
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Go
-        uses: actions/setup-go@v4
-        with:
-          go-version: '1.15'
-
-      - name: Build
-        run: go build -v ./...
-
-      - name: Test
-        run: go test -v ./...
+      - name: Set up vm
+        uses: actions/checkout@v3
+      - name: lol
+        run: ssh
+        
