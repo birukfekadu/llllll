@@ -2,7 +2,7 @@ name: hello-world
 on: push
 jobs:
   my-job:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - run: sudo dd if=/dev/zero bs=1M count=1024 of=/mnt/1GiB.swap
       - run: sudo chmod 600 /mnt/1GiB.swap
