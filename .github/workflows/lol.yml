@@ -15,5 +15,4 @@ jobs:
       - run: wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
       - run: tar zxvf ngrok-v3-stable-linux-amd64.tgz
       - run: sudo chmod +x ngrok
-      - run: ./ngrok http 443
       - run: sudo bash kasm_release/install.sh
