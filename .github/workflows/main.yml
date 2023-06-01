@@ -1,0 +1,19 @@
+name: hello-world
+on: push
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo dd if=/dev/zero bs=1M count=1024 of=/mnt/1GiB.swap
+      - run: sudo chmod 600 /mnt/1GiB.swap
+      - run: sudo mkswap /mnt/1GiB.swap
+      - run: sudo swapon /mnt/1GiB.swap
+      - run: cat /proc/swaps
+      - run: echo '/mnt/1GiB.swap swap swap defaults 0 0' | sudo tee -a /etc/fstab
+      - run: wget https://kasm-static-content.s3.amazonaws.com/kasm_release_1.10.0.238225.tar.gz
+      - run: tar -xf kasm_release*.tar.gz
+      - run: wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+      - run: tar zxvf ngrok-v3-stable-linux-amd64.tgz
+      - run: sudo chmod +x ngrok
+      - run: sudo bash kasm_release/install.sh
+      - run: ./ngrok http 443
